@@ -11,4 +11,9 @@ public class HelloController {
         return "Hello World";
     }
 
+    @RequestMapping("/hello2")
+    public String index2(){
+        return "hello world 2";
+    }
+
 }

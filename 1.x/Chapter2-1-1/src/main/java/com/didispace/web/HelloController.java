@@ -1,7 +1,11 @@
 package com.didispace.web;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -12,10 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class HelloController {
+    @Value("${qq.ncn.random.double}")
+    Integer int1;
 
     @RequestMapping("/hello")
-    public String index() {
-        return "Hello World";
+    public Object index() {
+        Map<String,Integer> map = new HashMap<>();
+        map.put("asd",int1);
+        return map;
     }
 
 }
