@@ -10,6 +10,13 @@ public class UserController {
 
     // 创建线程安全的Map，模拟users信息的存储
     static Map<Long, User> users = Collections.synchronizedMap(new HashMap<Long, User>());
+    static{
+        User user= new User();
+        user.setName("asd");
+        user.setAge(15);
+        user.setId(1L);
+        users.put(1L,user);
+    }
 
     /**
      * 处理"/users/"的GET请求，用来获取用户列表
@@ -55,12 +62,23 @@ public class UserController {
      * @param user
      * @return
      */
-    @PutMapping("/{id}")
-    public String putUser(@PathVariable Long id, @RequestBody User user) {
+//    @PutMapping("/{id}")
+//    public String putUser(@PathVariable Long id, @RequestBody User user) {
+//        User u = users.get(id);
+//        u.setName(user.getName());
+//        u.setAge(user.getAge());
+//        users.put(id, u);
+//        return "success";
+//    }
+
+    //***************************************
+    @RequestMapping("/update/{id}" )                     //user  is null
+    public String updateUser(@PathVariable Long id,@RequestBody User user){
         User u = users.get(id);
         u.setName(user.getName());
         u.setAge(user.getAge());
-        users.put(id, u);
+        users.put(id,u);
+        System.out.println(u);
         return "success";
     }
 
@@ -76,4 +94,16 @@ public class UserController {
         return "success";
     }
 
+
+    //*************************************
+    @RequestMapping("/{name}")
+    public User getUserByName(@PathVariable String name){
+        for (int i = 0; i < users.size(); i++) {
+            User user = users.get(i);
+            if(user.getName().equals(name)){
+                return user;
+            }
+        }
+        return null;
+    }
 }

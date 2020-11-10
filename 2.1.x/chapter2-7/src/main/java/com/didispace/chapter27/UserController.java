@@ -1,4 +1,4 @@
-package com.didispace.demo;
+package com.didispace.chapter27;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

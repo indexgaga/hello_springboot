@@ -16,7 +16,7 @@ import java.util.Map;
  */
 @RestController
 public class HelloController {
-    @Value("${qq.ncn.random.double}")
+    @Value("${cn.qqncn.random.double}")
     Integer int1;
 
     @RequestMapping("/hello")

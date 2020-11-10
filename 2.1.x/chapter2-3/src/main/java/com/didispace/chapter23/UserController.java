@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.*;
 
+
 @Api(tags = "用户管理")
 @RestController
 @RequestMapping(value = "/users")     // 通过这里配置使下面的映射都在/users下
@@ -35,6 +36,7 @@ public class UserController {
     public User getUser(@PathVariable Long id) {
         return users.get(id);
     }
+
 
     @PutMapping("/{id}")
     @ApiImplicitParam(paramType = "path", dataType = "Long", name = "id", value = "用户编号", required = true, example = "1")
